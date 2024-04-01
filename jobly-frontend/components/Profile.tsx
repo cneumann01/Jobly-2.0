@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/Profile.scss";
+import "./Profile.scss";
 
 const Profile: React.FC = () => {
 	return (

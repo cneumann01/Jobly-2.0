@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/JobList.scss";
+import "./JobList.scss";
 
 const JobList: React.FC = () => {
 	return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/Signup.scss";
+import "./Signup.scss";
 
 const Signup: React.FC = () => {
 	return (

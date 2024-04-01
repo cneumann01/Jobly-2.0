@@ -1,7 +1,7 @@
 // HomePage.tsx
 
 import React from "react";
-import "../styles/HomePage.scss";
+import "./HomePage.scss";
 const HomePage: React.FC = () => {
 	return (
 		<div className="homePage">
