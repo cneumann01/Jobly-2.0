@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
+
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 interface UserCredentials {
@@ -72,10 +73,16 @@ class JoblyApi {
 
 		try {
 			return await axios({ url, method, data, params, headers });
-		} catch (err) {
-			console.error("API Error:", err.response);
-			let message = err.response?.data?.error?.message;
-			throw Array.isArray(message) ? message : [message];
+		} catch (err: unknown) {
+			// Checking if err is an instance of Error
+			if (err instanceof Error) {
+				console.error("API Error:", err.response);
+				let message = err.response?.data?.error?.message;
+				throw Array.isArray(message) ? message : [message];
+			}
+
+			// Fallback error if the caught object isn't an Error instance
+			throw ["An unknown error occurred"];
 		}
 	}
 

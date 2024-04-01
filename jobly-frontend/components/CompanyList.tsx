@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import JoblyApi from "../JoblyApi"; 
+import JoblyApi from "../src/JoblyApi"; 
 import "./CompanyList.scss"; 
 
 interface Company {
