@@ -10,18 +10,16 @@ import NotFound from "./components/NotFound";
 
 const AppRoutes = () => {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/companies" element={<CompanyList />} />
-				<Route path="/companies/:handle" element={<CompanyDetail />} />
-				<Route path="/jobs" element={<JobList />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/signup" element={<Signup />} />
-				<Route path="/profile" element={<Profile />} />
-				<Route path="*" element={<NotFound />} />
-			</Routes>
-		</BrowserRouter>
+		<Routes>
+			<Route path="/" element={<HomePage />} />
+			<Route path="/companies" element={<CompanyList />} />
+			<Route path="/companies/:handle" element={<CompanyDetail />} />
+			<Route path="/jobs" element={<JobList />} />
+			<Route path="/login" element={<Login />} />
+			<Route path="/signup" element={<Signup />} />
+			<Route path="/profile" element={<Profile />} />
+			<Route path="*" element={<NotFound />} />
+		</Routes>
 	);
 };
 

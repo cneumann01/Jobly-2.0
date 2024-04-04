@@ -1,21 +1,11 @@
-// Login.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import JoblyApi from "../api/JoblyApi";
-import "./Login.scss";
+import { useAuth } from "../context/AuthContext";
+import "./Form.scss";
 
 interface UserCredentials {
 	username: string;
 	password: string;
-}
-
-interface AuthResponse {
-	username: string;
-	firstName: string;
-	lastName: string;
-	email: string;
-	isAdmin: boolean;
-	token: string;
 }
 
 const Login: React.FC = () => {
@@ -25,6 +15,7 @@ const Login: React.FC = () => {
 	});
 	const [error, setError] = useState<string | null>(null);
 	const navigate = useNavigate();
+	const authContext = useAuth(); // Uses the useAuth hook to access the AuthContext instead of the JoblyApi directly
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -37,41 +28,40 @@ const Login: React.FC = () => {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setError(null); // Reset any previous error
+
 		try {
-			const response: AuthResponse = await JoblyApi.login(credentials);
-			localStorage.setItem("token", response.token); // Save the token in localStorage or context
-			JoblyApi.token = response.token; // Update the token for your JoblyApi requests
-			navigate("/companies"); // Redirect the user after login
+			// Utilize the login function from AuthContext
+			await authContext.login(credentials);
+			navigate("/companies");
 		} catch (err) {
-			setError("Login failed: Invalid username or password."); // Update the error state to display the message
+			setError("Login failed: Invalid username or password.");
 		}
 	};
 
 	return (
-		<div className="login">
+		<div className="form_card">
 			<h1>Login</h1>
 			{error && <div className="error">{error}</div>}{" "}
-			{/* Display the error message */}
 			<form onSubmit={handleSubmit}>
 				<div>
-					<label htmlFor="username">Username</label>
 					<input
 						id="username"
 						name="username"
 						value={credentials.username}
 						onChange={handleChange}
 						type="text"
+						placeholder="Username"
 						required
 					/>
 				</div>
 				<div>
-					<label htmlFor="password">Password</label>
 					<input
 						id="password"
 						name="password"
 						value={credentials.password}
 						onChange={handleChange}
 						type="password"
+						placeholder="Password"
 						required
 					/>
 				</div>

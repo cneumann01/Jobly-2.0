@@ -1,4 +1,4 @@
-.login {
+.form_card {
 	padding: 20px;
 	max-width: 400px;
 	margin: 40px auto;
@@ -11,6 +11,12 @@
 		font-size: 24px;
 		margin-bottom: 20px;
 		text-align: center;
+	}
+
+	.error {
+		color: #ff3860;
+		text-align: center;
+        margin: 1rem;
 	}
 
 	form {
@@ -43,11 +49,6 @@
 			&:hover {
 				background-color: #0056b3;
 			}
-		}
-
-		.error {
-			color: #ff3860;
-			text-align: center;
 		}
 	}
 }

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import JoblyApi from "../api/JoblyApi";
-import "./Signup.scss";
+import "./Form.scss";
+
 
 interface RegisterData {
 	username: string;
@@ -47,10 +48,9 @@ const Signup: React.FC = () => {
 	};
 
 	return (
-		<div className="signup">
+		<div className="form_card">
 			<h1>Sign Up</h1>
 			{error && <p className="error">{error}</p>}{" "}
-			{/* Display error message */}
 			<form onSubmit={handleSubmit}>
 				<input
 					name="username"

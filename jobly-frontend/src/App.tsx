@@ -1,15 +1,19 @@
-import "./components/Navbar"
+import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import Navbar from "./components/Navbar";
 import AppRoutes from "./AppRoutes";
 import "./App.scss";
-import Navbar from "./components/Navbar";
-
 
 function App() {
 	return (
-		<div>
-      <Navbar />
-			<AppRoutes />
-		</div>
+		<BrowserRouter>
+			<div>
+				<AuthProvider>
+					<Navbar />
+					<AppRoutes />
+				</AuthProvider>
+			</div>
+		</BrowserRouter>
 	);
 }
 

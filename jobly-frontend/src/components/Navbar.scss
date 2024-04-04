@@ -1,0 +1,47 @@
+nav {
+	background-color: #333;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem 1rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+}
+
+.nav-link {
+	color: #fff;
+	text-decoration: none;
+	margin: 0 1rem;
+}
+
+.user-info {
+	display: flex;
+	align-items: center;
+}
+
+.username {
+	margin-right: 1rem;
+}
+
+button.auth-button {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	padding: 0.5rem 1rem;
+	margin-left: 1rem; 
+	border-radius: 8px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #0056b3;
+	}
+}

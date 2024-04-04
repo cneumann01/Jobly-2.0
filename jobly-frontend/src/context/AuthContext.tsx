@@ -1,6 +1,6 @@
 // src/context/AuthContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import JoblyApi, { AuthResponse } from "../api/JoblyApi"; // Adjust the import path as needed
+import JoblyApi, { AuthResponse } from "../api/JoblyApi";
 
 interface AuthContextType {
 	user: AuthResponse | null;
