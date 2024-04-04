@@ -2,12 +2,12 @@ import axios, { AxiosResponse } from "axios";
 
 const BASE_URL = "http://localhost:3001";
 
-interface UserCredentials {
+export interface UserCredentials {
 	username: string;
 	password: string;
 }
 
-interface RegisterData {
+export interface RegisterData {
 	username: string;
 	password: string;
 	firstName: string;
@@ -15,7 +15,7 @@ interface RegisterData {
 	email: string;
 }
 
-interface AuthResponse {
+export interface AuthResponse {
 	username: string;
 	firstName: string;
 	lastName: string;

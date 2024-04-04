@@ -1,7 +1,7 @@
-import "./Navbar"
+import "./components/Navbar"
 import AppRoutes from "./AppRoutes";
 import "./App.scss";
-import Navbar from "./Navbar";
+import Navbar from "./components/Navbar";
 
 
 function App() {

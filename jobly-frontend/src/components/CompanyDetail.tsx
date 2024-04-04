@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import JoblyApi from "../src/JoblyApi";
+import JoblyApi from "../api/JoblyApi";
 import "./CompanyDetail.scss";
 
 interface Company {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import JoblyApi from "../src/JoblyApi";
+import JoblyApi from "../api/JoblyApi";
 import "./Signup.scss";
 
 interface RegisterData {

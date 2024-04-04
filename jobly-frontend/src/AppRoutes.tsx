@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "../components/HomePage";
-import CompanyList from "../components/CompanyList";
-import CompanyDetail from "../components/CompanyDetail";
-import JobList from "../components/JobList";
-import Login from "../components/Login";
-import Signup from "../components/Signup";
-import Profile from "../components/Profile";
-import NotFound from "../components/NotFound";
+import HomePage from "./components/HomePage";
+import CompanyList from "./components/CompanyList";
+import CompanyDetail from "./components/CompanyDetail";
+import JobList from "./components/JobList";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Profile from "./components/Profile";
+import NotFound from "./components/NotFound";
 
 const AppRoutes = () => {
 	return (
