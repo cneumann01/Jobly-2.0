@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 
-
 const BASE_URL = "http://localhost:3001";
 
 interface UserCredentials {
@@ -14,6 +13,15 @@ interface RegisterData {
 	firstName: string;
 	lastName: string;
 	email: string;
+}
+
+interface AuthResponse {
+	username: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	isAdmin: boolean;
+	token: string;
 }
 
 interface Company {
@@ -87,14 +95,31 @@ class JoblyApi {
 	}
 
 	// Authentication methods
-	static async login(credentials: UserCredentials): Promise<void> {
-		const res = await this.request(`auth/token`, credentials, "post");
-		this.token = res.data.token;
+	static async login(credentials: UserCredentials): Promise<AuthResponse> {
+		const res = await this.request("auth/token", credentials, "post");
+		// Store the token for future requests.
+		JoblyApi.token = res.data.token;
+		// Return the full response data including the token.
+		return res.data;
 	}
 
-	static async register(data: RegisterData): Promise<void> {
-		const res = await this.request(`auth/register`, data, "post");
-		this.token = res.data.token;
+	static async register(data: RegisterData): Promise<AuthResponse> {
+		try {
+			const res = await this.request("auth/register", data, "post");
+			JoblyApi.token = res.data.token; // Store the token for future requests
+			return res.data; // Return the full response data including the token
+		} catch (err) {
+			// Narrow down unknown error
+			if (axios.isAxiosError(err) && err.response) {
+				// If the error is an Axios error and has a response, it's likely from backend
+				const message =
+					err.response.data.error.message || "Registration failed.";
+				throw new Error(message); // Throw a new error with the message from the backend
+			} else {
+				// If the error is not from Axios, or doesn't have a response, generic error
+				throw new Error("An unexpected error occurred.");
+			}
+		}
 	}
 
 	// Company methods
