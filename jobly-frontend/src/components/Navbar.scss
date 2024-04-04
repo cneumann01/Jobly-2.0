@@ -10,6 +10,19 @@ nav {
 	right: 0;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	z-index: 1000;
+	height: 10%;
+}
+
+.nav-brand {
+	display: flex;
+	align-items: center;
+
+	.nav-link {
+		color: #fff;
+		text-decoration: none;
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
 }
 
 .nav-links {
@@ -23,6 +36,11 @@ nav {
 	margin: 0 1rem;
 }
 
+.nav-link.active {
+	font-weight: bold;
+	color: #007bff;
+}
+
 .user-info {
 	display: flex;
 	align-items: center;
@@ -32,12 +50,12 @@ nav {
 	margin-right: 1rem;
 }
 
-button.auth-button {
+button.logout-button {
 	background-color: #007bff;
 	color: #fff;
 	border: none;
 	padding: 0.5rem 1rem;
-	margin-left: 1rem; 
+	margin-left: 1rem;
 	border-radius: 8px;
 	cursor: pointer;
 
