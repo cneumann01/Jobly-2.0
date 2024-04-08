@@ -15,11 +15,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
 	const [user, setUser] = useState<AuthResponse | null>(null);
 
-	const login = async (loginData: { username: string; password: string }) => {
-		const userData = await JoblyApi.login(loginData);
-		setUser(userData);
-		localStorage.setItem("token", userData.token); // Persist token for session management
-		JoblyApi.token = userData.token; // Set token for future API requests
+	const login = async (loginData: {username: string; password: string}) => {
+		const response = await JoblyApi.login(loginData);
+		setUser(response); // Update state with the user details
+		localStorage.setItem("token", response.token); // Optionally save the token to localStorage
+		JoblyApi.token = response.token; // Set the token for future API requests
 	};
 
 	const logout = () => {

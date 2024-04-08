@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "../context/AuthContext"; // Adjust the import path as needed
-import JoblyApi from "../api/JoblyApi"; // Adjust the import path as needed
-import "./Profile.scss"; // Ensure the SCSS is imported
+import { useAuth } from "../context/AuthContext";
+import JoblyApi from "../api/JoblyApi"; 
+import "./Profile.scss";
 
-// Assuming the AuthResponse interface from JoblyApi includes all needed fields
 const Profile: React.FC = () => {
 	const { user, setUser } = useAuth();
 	const [formData, setFormData] = useState({

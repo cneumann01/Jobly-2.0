@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import JoblyApi from "../api/JoblyApi";
 import "./Form.scss";
-
 
 interface RegisterData {
 	username: string;
@@ -22,6 +22,7 @@ const Signup: React.FC = () => {
 		email: "",
 	});
 	const [error, setError] = useState<string | null>(null);
+	const { login } = useAuth(); // Use the login function from AuthContext
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -32,9 +33,13 @@ const Signup: React.FC = () => {
 		e.preventDefault();
 		setError(null); // Reset any previous error
 		try {
-			const response = await JoblyApi.register(formData);
-			JoblyApi.token = response.token; // Save the token to the JoblyApi class
-			localStorage.setItem("token", response.token); // Optionally save the token to localStorage
+			// Directly use JoblyApi.register to create a new user
+			await JoblyApi.register(formData);
+			// After registration, log the user in using the login function from AuthContext
+			await login({
+				username: formData.username,
+				password: formData.password,
+			});
 			navigate("/companies"); // Navigate to the companies page after successful signup
 		} catch (err) {
 			if (err instanceof Error) {
@@ -50,7 +55,7 @@ const Signup: React.FC = () => {
 	return (
 		<div className="form_card">
 			<h1>Sign Up</h1>
-			{error && <p className="error">{error}</p>}{" "}
+			{error && <p className="error">{error}</p>}
 			<form onSubmit={handleSubmit}>
 				<input
 					name="username"

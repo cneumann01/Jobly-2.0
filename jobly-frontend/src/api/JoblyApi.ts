@@ -84,8 +84,8 @@ class JoblyApi {
 		} catch (err: unknown) {
 			// Checking if err is an instance of Error
 			if (err instanceof Error) {
-				console.error("API Error:", err.response);
-				let message = err.response?.data?.error?.message;
+				console.error("API Error:", err);
+				let message = err.message;
 				throw Array.isArray(message) ? message : [message];
 			}
 

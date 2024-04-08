@@ -25,11 +25,8 @@ const Navbar: React.FC = () => {
 						<NavLink to="/profile" className="nav-link">
 							Profile
 						</NavLink>
-						<span className="username">
-							{user.username}username
-						</span>
 						<button onClick={logout} className="logout-button">
-							Logout
+							Logout {user.username}
 						</button>
 					</>
 				) : (
