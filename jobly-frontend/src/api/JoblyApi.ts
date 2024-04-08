@@ -143,6 +143,7 @@ class JoblyApi {
 
 	static async getJob(id: number): Promise<Job> {
 		const res = await this.request(`jobs/${id}`);
+		console.log(res.data.job)
 		return res.data.job;
 	}
 
